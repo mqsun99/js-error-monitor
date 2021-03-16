@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+        <script>
+          window.TrackJS && TrackJS.install({ 
+            token: "267e84549e9d4dc0a137b42ed4ec5bbc"
+            // for more configuration options, see https://docs.trackjs.com
+          });
+        </script>        
+    </head>
+
+    <body>
+        <label for="number">Enter a number you like:</label>
+        <input type="text" name="number" id="answer">
+        <button id="submit" onclick="printOutput()">submit</button><br><br>
+        <button id="console-log" onclick="consoleLog()">console log</button>
+        <button id="console-error" onclick="consoleError()">console error</button>
+        <button id="console-table" onclick="consoleTable()">console table</button>
+        <button id="console-dir" onclick="consoleDir()">console dir</button>
+        <button id="console-dirxml" onclick="consoleDirXML()">console dirxml</button>
+        <button id="console-group-start" onclick="consoleGroup()">console group start</button>
+        <button id="console-group-end" onclick="consoleGroupEnd()">console group end</button>
+        <button id="start-timer" onclick="startTimer()">start timer</button>
+        <button id="end-timer" onclick="endTimer()">end timer</button>
+        <button id="console-trace" onclick="consoleTrace()">console trace</button>
+        <button id="trigger-global-error" onclick="globalError()">trigger a global error</button>
+
+        <script>
+            class TypeError extends Error {
+                constructor(message) {
+                super(message);
+                this.name = 'TypeError';
+                }
+            }
+    
+            function printOutput(){
+                try {
+                var num = Number(document.getElementById('answer').value);
+                if(isNaN(num)){
+                    throw new TypeError('Input type not allowed.');
+                }
+                } catch (err) {
+                console.error(err.message);
+                } finally {
+                console.log('Input Entered.');
+                }
+            }
+        
+            function consoleLog() {
+                var num = Number(document.getElementById('answer').value);
+                console.log(`Entering value: ${num}`);
+            }
+        
+            function consoleError() {
+                var num = Number(document.getElementById('answer').value);
+                console.error(`Sorry, I don't understand the value you entered: ${num}??`);
+            }
+        
+            function consoleTable() {
+                console.table([
+                {
+                    first: 'Miaoqiu',
+                    last: 'Sun',
+                },
+                {
+                    first: 'Chong',
+                    last: 'Sun',
+                },
+                {
+                    first: 'Yongjian',
+                    last: 'Sun',
+                }
+                ]);
+            }
+        
+            function consoleDir() {
+                console.dir(document.body);
+            }
+        
+            function consoleDirXML() {
+                console.dirxml(document);
+            }
+        
+            function consoleGroup() {
+                console.group('Log Group');
+            }
+        
+            function consoleGroupEnd() {
+                console.groupEnd('Log Group');
+            }
+        
+            function startTimer() {
+                console.log('Timer Started!');
+                console.time();
+            }
+        
+            function endTimer() {
+                console.log('Timer Ended!');
+                console.timeEnd();
+            }
+        
+            function consoleTrace() {
+                const deep = () => { deeper(); };
+                const deeper = () => { deepest(); };
+                const deepest = () => { console.trace(); };
+                deep();
+            }
+        
+            function globalError() {
+                try { 
+                    console.log('Sadly an error occurred:');
+                    abooM("bad code!"); 
+                } catch(err) {
+                    if (window.onerror){
+                        console.error('window.onerror has errors: ' + err.message);
+                    } else {
+                        console.log('no errors caught');
+                    }
+                }
+            }
+
+        </script>
+      </body>
+    </html>
