@@ -8,4 +8,10 @@ To learn how to deal with errors a bit better I explored JavaScript error handli
 - Use of 3rd Party JavaScript monitoring services 
 - - JavaScript Error Logging
 
-Site published at: https://mqsun99.github.io/js-error-monitering/
+Site published at: https://mqsun99.github.io/js-error-moniter/
+
+## Video Demo
+
+
+https://user-images.githubusercontent.com/66711836/138813565-b8948c62-c2a2-42f6-9c35-19e4b15505e2.mp4
+
